@@ -1,0 +1,24 @@
+{
+  "name": "snapterest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "source/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rmallols/snapterest.git"
+  },
+  "author": "ricardo.mallols@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rmallols/snapterest/issues"
+  },
+  "homepage": "https://github.com/rmallols/snapterest",
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
