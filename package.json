@@ -22,5 +22,8 @@
     "gulp-watch": "^4.3.5",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.5.0"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
   }
 }

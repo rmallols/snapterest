@@ -18982,22 +18982,35 @@ module.exports = require('./lib/React');
 },{"./lib/React":26}],158:[function(require,module,exports){
 'use strict';
 
+var ReactDOM = require('react-dom'),
+    test = require('./components/test');
+
+ReactDOM.render(test.buildMarkup('frontend'), document.getElementById('react-application'));
+
+},{"./components/test":159,"react-dom":2}],159:[function(require,module,exports){
+'use strict';
+
 var React = require('react'),
     ReactDOM = require('react-dom');
 
-var h1 = React.DOM.h1({ className: 'header', key: 'header' }, 'This is React');
-var p = React.DOM.p({ className: 'content', key: 'content' }, 'And that\'s how it works');
+module.exports = {
 
-var listItemElement1 = React.DOM.li({ className: 'item-1', key: 'item-1' }, 'Item 1');
-var listItemElement2 = React.DOM.li({ className: 'item-2', key: 'item-2' }, 'Item 2');
-var listItemElement3 = React.DOM.li({ className: 'item-3', key: 'item-3' }, 'Item 3');
+        buildMarkup: function buildMarkup(origin) {
+                var h1, p, listItemElement1, listItemElement2, listItemElement3, listOfItems, reactFragment;
 
-var reactFragment = [listItemElement1, listItemElement2, listItemElement3];
-var listOfItems = React.DOM.ul({ className: 'list-of-items', key: 'list-of-items' }, reactFragment);
+                h1 = React.DOM.h1({ className: 'header', key: 'header' }, 'This is React from ' + origin);
+                p = React.DOM.p({ className: 'content', key: 'content' }, 'And that\'s how it works');
 
-var reactFragment = [h1, p, listOfItems];
-var section = React.createElement('section', { className: 'container' }, reactFragment);
+                listItemElement1 = React.DOM.li({ className: 'item-1', key: 'item-1' }, 'Item 1');
+                listItemElement2 = React.DOM.li({ className: 'item-2', key: 'item-2' }, 'Item 2');
+                listItemElement3 = React.DOM.li({ className: 'item-3', key: 'item-3' }, 'Item 3');
 
-ReactDOM.render(section, document.getElementById('react-application'));
+                reactFragment = [listItemElement1, listItemElement2, listItemElement3];
+                listOfItems = React.DOM.ul({ className: 'list-of-items', key: 'list-of-items' }, reactFragment);
+
+                reactFragment = [h1, p, listOfItems];
+                return React.createElement('section', { className: 'container' }, reactFragment);
+        }
+};
 
 },{"react":157,"react-dom":2}]},{},[158]);
