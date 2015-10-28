@@ -1,4 +1,11 @@
-var ReactDOM = require('react-dom'),
+var React = require('react'),
+    ReactDOM = require('react-dom'),
     test = require('./components/test');
 
-ReactDOM.render(test.buildMarkup('frontend'), document.getElementById('react-application'));
+var displayJSX = false;
+
+var markup = displayJSX ? <ul><li cassName="list-of-items">123</li></ul> : test.buildMarkup('frontend');
+
+ReactDOM.render(markup, document.getElementById('react-application'));
+
+

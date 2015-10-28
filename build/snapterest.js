@@ -18982,12 +18982,25 @@ module.exports = require('./lib/React');
 },{"./lib/React":26}],158:[function(require,module,exports){
 'use strict';
 
-var ReactDOM = require('react-dom'),
+var React = require('react'),
+    ReactDOM = require('react-dom'),
     test = require('./components/test');
 
-ReactDOM.render(test.buildMarkup('frontend'), document.getElementById('react-application'));
+var displayJSX = false;
 
-},{"./components/test":159,"react-dom":2}],159:[function(require,module,exports){
+var markup = displayJSX ? React.createElement(
+    'ul',
+    null,
+    React.createElement(
+        'li',
+        { cassName: 'list-of-items' },
+        '123'
+    )
+) : test.buildMarkup('frontend');
+
+ReactDOM.render(markup, document.getElementById('react-application'));
+
+},{"./components/test":159,"react":157,"react-dom":2}],159:[function(require,module,exports){
 'use strict';
 
 var React = require('react'),
