@@ -24,6 +24,9 @@
     "watchify": "^3.5.0"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "regenerate": "^1.2.1",
+    "regjsgen": "^0.2.0",
+    "regjsparser": "^0.1.5"
   }
 }
