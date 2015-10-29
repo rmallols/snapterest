@@ -16,7 +16,6 @@ app.get('/f', function (req, res) {
 });
 
 app.get('/b', function (req, res) {
-    //res.send(ReactDOMServer.renderToStaticMarkup(test.buildMarkup('backend')));
     var element = React.createElement(test.buildComponent('backend'), { origin: 'backend'});
     res.send(ReactDOMServer.renderToStaticMarkup(element));
 });

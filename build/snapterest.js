@@ -18987,7 +18987,6 @@ var React = require('react'),
     test = require('./components/test'),
     element = React.createElement(test.buildComponent(), { origin: 'frontend' });
 
-//ReactDOM.render(test.buildMarkup('frontend'), document.getElementById('react-application'));
 ReactDOM.render(element, document.getElementById('react-application'));
 
 },{"./components/test":159,"react":157,"react-dom":2}],159:[function(require,module,exports){
@@ -18997,43 +18996,6 @@ var React = require('react'),
     ReactDOM = require('react-dom');
 
 module.exports = {
-
-    buildMarkup: function buildMarkup(origin) {
-        return React.createElement(
-            'div',
-            null,
-            React.createElement(
-                'h1',
-                { className: 'header', key: 'header' },
-                'This is react from ',
-                origin
-            ),
-            React.createElement(
-                'p',
-                { className: 'content', key: 'content' },
-                'And that\'s how it works'
-            ),
-            React.createElement(
-                'ul',
-                { className: 'list-of-items' },
-                React.createElement(
-                    'li',
-                    { className: 'item-1' },
-                    'Item 1'
-                ),
-                React.createElement(
-                    'li',
-                    { className: 'item-2' },
-                    'Item 2'
-                ),
-                React.createElement(
-                    'li',
-                    { className: 'item-3' },
-                    'Item 3'
-                )
-            )
-        );
-    },
 
     buildComponent: function buildComponent() {
         return React.createClass({
