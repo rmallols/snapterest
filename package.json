@@ -27,6 +27,7 @@
     "express": "^4.13.3",
     "regenerate": "^1.2.1",
     "regjsgen": "^0.2.0",
-    "regjsparser": "^0.1.5"
+    "regjsparser": "^0.1.5",
+    "snapkite-stream-client": "^1.0.3"
   }
 }
