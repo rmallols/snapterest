@@ -29,7 +29,7 @@ var React = Require('react'),
                                 onRemoveAllTweetsFromCollection={this.props.onRemoveAllTweetsFromCollection}/>
                             <TweetList
                                 tweets={this.props.tweets}
-                                onRemoveTweetFromCollection="{this.props.onRemoveTweetFromCollection}"/>
+                                onRemoveTweetFromCollection={this.props.onRemoveTweetFromCollection}/>
                         </div>;
             }
             return <Header text="Your collection is empty" />;
