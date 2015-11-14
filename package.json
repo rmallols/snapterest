@@ -4,7 +4,7 @@
   "description": "",
   "main": "source/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "browserify": "^11.2.0",
     "gulp": "^3.9.0",
     "gulp-watch": "^4.3.5",
+    "jest-cli": "^0.7.1",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.5.0"
   },
