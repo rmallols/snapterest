@@ -17,18 +17,31 @@
   },
   "homepage": "https://github.com/rmallols/snapterest",
   "devDependencies": {
+    "babel-jest": "^5.3.0",
     "browserify": "^11.2.0",
     "gulp": "^3.9.0",
     "gulp-watch": "^4.3.5",
     "jest-cli": "^0.7.1",
+    "react-addons-test-utils": "^0.14.2",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.5.0"
   },
   "dependencies": {
     "express": "^4.13.3",
+    "react": "^0.14.2",
     "regenerate": "^1.2.1",
     "regjsgen": "^0.2.0",
     "regjsparser": "^0.1.5",
     "snapkite-stream-client": "^1.0.3"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   }
 }

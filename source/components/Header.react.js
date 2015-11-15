@@ -12,7 +12,7 @@ var React = require('react'),
             };
         },
         render: function () {
-            return <h2 style="{headerStyle}">{this.props.text}</h2>;
+            return <h2 styles="{headerStyle}">{this.props.text}</h2>;
         }
     });
 
