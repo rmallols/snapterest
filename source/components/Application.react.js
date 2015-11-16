@@ -1,6 +1,6 @@
 var React = require('react'),
     Stream = require('./Stream.react'),
-    collection = require('./Collection.react'),
+    Collection = require('./Collection.react'),
     Application = React.createClass({
         getInitialState: function () {
             return {

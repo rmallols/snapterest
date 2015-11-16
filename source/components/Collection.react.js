@@ -1,4 +1,4 @@
-var React = Require('react'),
+var React = require('react'),
     ReactDOMServer = require('react-dom/server'),
     CollectionControls = require('./CollectionControls.react'),
     TweetList = require('./TweetList.react'),

@@ -22,7 +22,7 @@ var React = require('react'),
                     return new Error('Tweet must have an image');
                 }
             },
-            onImageClick: React.propTypes.func
+            onImageClick: React.PropTypes.func
         },
         handleImageClick: function () {
             var tweet = this.props.tweet,
