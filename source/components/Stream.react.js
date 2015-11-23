@@ -1,18 +1,23 @@
 var React = require('react'),
-    SnapkiteStreamClient = require('snapkite-stream-client'),
     StreamTweet = require('./Stream.react'),
     Header = require('./Header.react'),
+    TweetStore = require('../Stores/TweetStore'),
     Stream = React.createClass({
         getInitialState: function () {
             return {
-                tweet: null
+                tweet: TweetStore.getTweet()
             };
         },
         componentDidMount: function () {
-            SnapkiteStreamClient.initialiseStream(this.handleNewTweet);
+            TweetStore.addChangeListener(this.onTweetChange);
         },
         componentWillUnmount: function () {
-            SnapkiteStreamClient.destroyStream();
+            TweetStore.removeChangeListener(this.onTweetChange);
+        },
+        onTweetChange: function () {
+            this.setState({
+                tweet: TweetStore.getTweet()
+            });
         },
         handleNewTweet: function (tweet) {
             this.setState({

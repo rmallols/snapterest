@@ -1,9 +1,8 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
-    test = require('./components/test'),
-    element = React.createElement(test.buildComponent(), { origin: 'frontend'}),
-    Application = require('./components/Application.react');
+    Application = require('./components/Application.react'),
+    WebAPIUtils = require('./utils/WebAPIUtils');
 
-//ReactDOM.render(element, document.getElementById('react-application'));
+WebAPIUtils.initializeStreamOfTweets();
 
 ReactDOM.render(<Application />, document.getElementById('react-application'));
