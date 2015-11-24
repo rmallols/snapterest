@@ -3,51 +3,55 @@ var React = require('react'),
     Button = require('./Button.react'),
     CollectionRenameForm = require('./CollectionRenameForm.react'),
     CollectionExportForm = require('./CollectionExportForm.react'),
+    CollectionStore = require('../stores/CollectionStore'),
     CollectionControls = React.createClass({
 
-      getInitialState: function () {
-        return {
-          name: 'new',
-          isEditingName: false
-        };
-      },
+        getInitialState: function () {
+            return {
+                isEditingName: false
+            };
+        },
 
-      getHeaderText: function () {
-        var numberOfTweetsInCollection = this.props.numberOfTweetsInCollection,
-            text = (numberOfTweetsInCollection === 1) ?
-              numberOfTweetsInCollection + ' tweet in your' :
-              numberOfTweetsInCollection + ' tweets in your';
-        return  <span>{text} <strong>{this.state.name}</strong> collection</span>;
-      },
+        getHeaderText: function () {
+            var numberOfTweetsInCollection = this.props.numberOfTweetsInCollection,
+                text = numberOfTweetsInCollection,
+                name = CollectionStore.getCollectionName();
 
-      toggleEditCollectionName: function () {
-        this.setState({
-          isEditingName: !this.state.isEditingName
-        });
-      },
+            if (numberOfTweetsInCollection === 1) {
+                text = text + ' tweet in your';
+            } else {
+                text = text + ' tweets in your';
+            }
 
-      setCollectionName: function (name) {
-        this.setState({
-          name: name,
-          isEditingName: false
-        });
-      },
+            return (<span>{text} <strong>{name}</strong> collection</span>);
+        },
 
-      render: function () {
-        if (this.state.isEditingName) {
-          return  <CollectionRenameForm
-                    name={this.state.name}
-                    onChangeCollectionName={this.setCollectionName}
-                    onCancelCollectionNameChange={this.toggleEditCollectionName} />;
+        toggleEditCollectionName: function () {
+            this.setState({
+                isEditingName: !this.state.isEditingName
+            });
+        },
+
+        removeAllTweetsFromCollection: function () {
+            CollectionActionCreators.removeAllTweetsFromCollection();
+        },
+
+        render: function () {
+            if (this.state.isEditingName) {
+                return (
+                    <CollectionRenameForm onCancelCollectionNameChange={this.toggleEditCollectionName} />
+                );
+            }
+
+            return (
+                <div>
+                    <Header text={this.getHeaderText()} />
+                    <Button label="Rename collection" handleClick={this.toggleEditCollectionName} />
+                    <Button label="Empty collection" handleClick={this.removeAllTweetsFromCollection} />
+                    <CollectionExportForm htmlMarkup={this.props.htmlMarkup} />
+                </div>
+            );
         }
-
-        return <div>
-                <Header text={this.getHeaderText()} />
-                <Button label="Rename collection" handleClick={this.toggleEditCollectionName} />
-                <Button label="Empty collection" handleClick={this.props.onRemoveAllTweetsFromCollection} />
-                <CollectionExportForm htmlMarkup={this.props.htmlMarkup} />
-              </div>;
-      }
     });
 
 module.exports = CollectionControls;

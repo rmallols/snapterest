@@ -1,14 +1,16 @@
 var React = require('react'),
     Header = require('./Header.react'),
     Button = require('./Button.react'),
+    CollectionActionCreators = require('../actions/CollectionActionCreators'),
+    CollectionStore = require('../stores/CollectionStore'),
     inputStyle = {
       marginRight: '5px'
     },
     CollectionRenameForm = React.createClass({
-  
+
       getInitialState: function() {
         return {
-          inputValue: this.props.name
+          inputValue: CollectionStore.getCollectionName()
         };
       },
 
@@ -24,14 +26,17 @@ var React = require('react'),
       },
 
       handleFormSubmit: function (event) {
+        var collectionName;
         event.preventDefault();
-        var collectionName = this.state.inputValue;
-        this.props.onChangeCollectionName(collectionName);
+        collectionName = this.state.inputValue;
+        CollectionActionCreators.setCollectionName(collectionName);
+        this.props.onCancelCollectionNameChange();
       },
 
       handleFormCancel: function (event) {
+        var collectionName;
         event.preventDefault();
-        var collectionName = this.props.name;
+        collectionName = CollectionStore.getCollectionName();
         this.setInputValue(collectionName);
         this.props.onCancelCollectionNameChange();
       },
@@ -42,21 +47,19 @@ var React = require('react'),
 
       render: function () {
         return (
-          <form className="form-inline" onSubmit={this.handleSubmit}>
-            <Header text="Collection name:" />
-
-            <div className="form-group">
-              <input
-                className="form-control"
-                style={inputStyle}
-                onChange={this.handleInputValueChange}
-                value={this.state.inputValue}
-                ref="collectionName" />
-            </div>
-
-            <Button label="Change" handleClick={this.handleFormSubmit} />
-            <Button label="Cancel" handleClick={this.handleFormCancel} />
-          </form>
+            <form className="form-inline" onSubmit={this.handleSubmit}>
+              <Header text="Collection name:" />
+              <div className="form-group">
+                <input
+                    className="form-control"
+                    style={inputStyle}
+                    onChange={this.handleInputValueChange}
+                    value={this.state.inputValue}
+                    ref="collectionName" />
+              </div>
+              <Button label="Change" handleClick={this.handleFormSubmit} />
+              <Button label="Cancel" handleClick={this.handleFormCancel} />
+            </form>
         );
       }
     });
